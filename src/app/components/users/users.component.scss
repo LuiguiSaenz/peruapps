@@ -1,0 +1,51 @@
+#list-users{
+    padding: 40px;
+    border-radius: 10px;
+    -webkit-box-shadow: -1px 4px 38px -20px rgba(0,0,0,0.67);
+    -moz-box-shadow: -1px 4px 38px -20px rgba(0,0,0,0.67);
+    box-shadow: -1px 4px 38px -20px rgba(0,0,0,0.67);
+    .title{
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: space-between;
+        h4{
+            font-weight: bold;
+        }
+        .add{
+            background: #21b321;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 15px;
+            border: none;
+        }
+    }
+    
+    table{
+        td{
+            vertical-align: middle;
+            color: gray;
+            &.buttons{
+                button{
+                    margin: 0 5px;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 5px 15px;
+                    border: none;
+                    &.edit{
+                        background: #21b321;
+                    }
+                    &.detail{
+                        background: gray;
+                    }
+                    &.delete{
+                        background: #fd6464;
+                    }
+                }
+            }
+        }
+        img{
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<div id="list-users">
+    <div class="row title">
+        <h4>Lista de usuarios</h4>
+        <button type="button" (click)="open(content)" class="add">Crear usuario</button>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let user of users">
+            <td>{{user.id}}</td>
+            <td >{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td><img src="{{user.avatar}}"></td>
+            <td class="buttons">
+                <button class="edit" type="button">Editar</button>
+                <button class="detail" type="button">Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="total"
+    (pageChange)="getUsers($event)"></ngb-pagination>
+
+    <ng-template #content let-modal class=row>
+        <div class="header">
+            <p>CREAR USUARIO</p>
+        </div>
+        <div class="body">
+            <div class="box">
+                <p>Nombres:</p>
+                <input [(ngModel)]="name" type="text">
+            </div>
+            <div class="box">
+                <p>Apellido paterno:</p>
+                <input [(ngModel)]="lastName1" type="text">
+            </div>
+            <div class="box">
+                <p>Apellido materno:</p>
+                <input [(ngModel)]="lastName2" type="text">
+            </div>
+            <div class="box">
+                <p>Email:</p>
+                <input [(ngModel)]="email" type="text">
+            </div>
+            <div class="box">
+                <p>Fecha de nacimiento:</p>
+                <input [(ngModel)]="birthday" type="text" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker">
+            </div>
+            <div class="row-button">
+                <button type="button" class="cancel" (click)="modal.close()">Cancelar</button>
+                <button type="button" class="send" (click)="send()">Enviar</button>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
