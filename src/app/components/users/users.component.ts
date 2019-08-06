@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   lastName1: string
   lastName2: string
   email: string
-  birthday: Object
+  birthday: {day: number, month: number, year: number}
 
   getUsers() {
     let partialUrl = "?page=" + this.page.toString()
@@ -49,9 +49,11 @@ export class UsersComponent implements OnInit {
     form.append("apellidopat", this.lastName1)
     form.append("apellidomat", this.lastName2)
     form.append("email", this.email)
-    let birthdayString = (this.birthday.day > 9 ? this.birthday.day : "0" + this.birthday.day) + "/" + (this.birthday.month > 9 ? this.birthday.month : "0" + this.birthday.month) + "/" + this.birthday.year
-    form.append("fchnac", birthdayString)
-    form.append("fchingreso", birthdayString)
+    if (this.birthday.day){
+      let birthdayString = (this.birthday.day > 9 ? this.birthday.day : "0" + this.birthday.day) + "/" + (this.birthday.month > 9 ? this.birthday.month : "0" + this.birthday.month) + "/" + this.birthday.year
+      form.append("fchnac", birthdayString)
+      form.append("fchingreso", birthdayString)
+    }
     this._users.addUser(form).subscribe((response) => {
       console.log(response)
     })
